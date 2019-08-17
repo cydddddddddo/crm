@@ -39,7 +39,8 @@ public class DepartmentController extends BaseController {
     }
 
     /**
-     * 获得所有部门信息列表
+     * 获得所有部门信息列表（若传参则=搜索部门）
+     * 只要是需要刷新部门信息则都会调用
      * @param model
      * @param params
      * @return
@@ -52,13 +53,13 @@ public class DepartmentController extends BaseController {
     }
 
     /**
-     * 进入部门编辑页面
+     * 进入部门编辑页面（新增或修改时调用，区别只是id是否为默认值）
      * @param model
      * @param departmentId
      * @return
      */
     @RequestMapping(value = "/form/{departmentId}",method = RequestMethod.GET)
-    public String   userForm(Model model, @PathVariable Long departmentId){
+    public String userForm(Model model, @PathVariable Long departmentId){
         DepartmentModel departmentModel = new DepartmentModel();
         //新增操作部门id是0L
         if (!departmentId.equals(0L)){
@@ -69,7 +70,7 @@ public class DepartmentController extends BaseController {
     }
 
     /**
-     * 保存部门信息
+     * 保存部门信息（编辑后保存、新建后保存、添加角色后保存）
      * @param model
      * @param department
      * @return
@@ -152,7 +153,7 @@ public class DepartmentController extends BaseController {
     }
 
     /**
-     * 获得部门详细信息（角色信息？）
+     * 获得部门详细信息(编辑时调用、查看部门角色信息)
      * @param model
      * @param departmentId
      * @return

@@ -129,7 +129,7 @@ public class CustomerService extends BaseService {
     }
 
     /**
-     * 获得所有客户信息
+     * 获得所选择客户信息
      * @param params
      * @return
      */

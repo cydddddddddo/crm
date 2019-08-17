@@ -174,17 +174,22 @@
         var url = "category/list/data";
         $.post(url, function(result) {
             // 如果返回的结果不是null
-            if (null != result) {
+			if (null != result) {
                 var content = "";
-                
+             /*   for (var i=0;i<result.length;i++){
+                	content += "<option value='"
+							+ result[i].id
+							+"'>"+result[i].name + "</option>"
+				}*/
                 $.each(result.data, function(i, item) {
                     content += "<option  value='"
 							+ item.id
 							+ "'>" + item.name + "</option>";
                 });
-                $('#category').append(content);
-                
-                //编辑时显示当前产品分类
+
+				$('#category').append(content);
+
+				//编辑时显示当前产品分类
                 var categoryId = $("#categoryId").val();
                 if (categoryId != "") {
                     $("#category").val(categoryId);
@@ -193,7 +198,7 @@
                 toastr.error('获取产品类别失败！');
             }
         });
-    }
+	}
 
     //取消编辑按钮
     function cancelProduct() {

@@ -106,9 +106,10 @@ public class CustomerController extends BaseController {
      * @param customerId
      * @return
      */
-    @RequestMapping(value = "delete/{customerId}")
+    @RequestMapping(value = "/delete/{customerId}")
     @ResponseBody
     public ResponseData customerDelete(Model model, @PathVariable Long customerId) {
+        //打印日志信息
         logger.debug("delete customer:" + customerId);
         ResponseData responseData = new ResponseData();
         try {
@@ -187,12 +188,15 @@ public class CustomerController extends BaseController {
     public void doExport(Model model, @PathVariable String fileName, HttpServletResponse response) {
         try {
             String value = "";
+            //判断是否是乱码
             if (GarbledUtil.isMessyCode(fileName)) {
                 value = fileName;
             } else {
+                //乱码则改变编码
                 value = new String(fileName.getBytes("UTF-8"), "iso-8859-1");
             }
             List<CustomerModel> contacts = customerService.getAllCustomers();
+            //JXL操作Excel的对象（一个Excel对应一个Workbook）
             Workbook wb = customerService.export(value, contacts);
             response.setContentType("application/vnd.ms-excel");
             response.setHeader("Content-disposition", "attachment;filename=" + value + ".xlsx");

@@ -76,7 +76,7 @@ public class ProductService extends BaseService {
     }
 
     /**
-     * 查询所有订单选择的产品信息
+     * 查询所有订单选择的产品信息(此处没有调用)
      * @param productIds
      * @return
      */
@@ -89,7 +89,7 @@ public class ProductService extends BaseService {
      * @param value
      * @return
      */
-    public List<ProductModel> getProdectList(String value){
+    public List<ProductModel> getProductList(String value){
         return productDao.getProductList(value);
     }
 
@@ -159,6 +159,5 @@ public class ProductService extends BaseService {
     public PageContainer getProblemProductPage(Map<String,String> params){
         return productDao.getProblemProductPage(params);
     }
-
 
 }

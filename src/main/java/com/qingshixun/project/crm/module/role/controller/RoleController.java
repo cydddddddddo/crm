@@ -57,7 +57,7 @@ public class RoleController extends BaseController {
     }
 
     /**
-     * 查询角色分页信息
+     * 查询角色分页信息(部门管理中有调用，显示可选择的角色信息)
      * 
      * @param model
      * @return

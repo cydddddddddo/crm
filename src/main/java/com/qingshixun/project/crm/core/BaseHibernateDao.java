@@ -70,9 +70,9 @@ public class BaseHibernateDao<T, PK extends Serializable> {
         return session;
     }
 
-    public List<Object[]> queryBySql(String sql) {
+    public List<T> queryBySql(String sql) {
         @SuppressWarnings("unchecked")
-        List<Object[]> list = getSession().createSQLQuery(sql).list();
+        List<T> list = getSession().createSQLQuery(sql).list();
         return list;
     }
 
@@ -80,6 +80,7 @@ public class BaseHibernateDao<T, PK extends Serializable> {
      * 保存新增或修改实体对象.
      */
     public void save(final T entity) {
+        //Assert断言 断定某一个实际的值就为自己预期想得到的,如果不一样就抛出异常.
         Assert.notNull(entity, "Entity不允许为空");
         getSession().saveOrUpdate(entity);
         getSession().flush();

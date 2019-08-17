@@ -83,7 +83,7 @@
                 if (result.status == 0) {
                     loadContent("supplier/list");
                 } else {
-                    toastr.error('保存失败！');
+                    toastr.error('保存失败！可能已有相同内容供应商。');
                 }
             }
         });

@@ -31,9 +31,10 @@ public class ProductController extends BaseController {
         model.addAttribute("imagePath", ImageUtils.DEFAULT_IMAGE_PATH);
         return "/product/list";
     }
+
     //编辑商品信息
+    //@ResponseBody
     @RequestMapping(value = "/form/{productId}")
-    @ResponseBody
     public String productForm(Model model, @PathVariable Long productId){
         ProductModel product = null;
         if (0L==productId){
@@ -45,13 +46,13 @@ public class ProductController extends BaseController {
         model.addAttribute("imagePath", ImageUtils.DEFAULT_IMAGE_PATH);
         return "/product/form";
     }
-    //获得所有商品信息
+    //获得所有商品信息(单页)
     @RequestMapping(value = "/list/data")
     @ResponseBody
     public PageContainer productList(Model model,@RequestParam Map<String,String> params){
         return productService.getProductPage(params);
     }
-    //获得所有商品信息 productSelec
+    //获得所有商品信息（报价单调用此处没有调用）
     @RequestMapping(value = "/list/select")
     @ResponseBody
     public PageContainer getSelectProduct(Model model, @RequestParam Map<String,String> params){
@@ -98,13 +99,13 @@ public class ProductController extends BaseController {
         }
         return responseData;
     }
-    //获取所有供常见问答选择的产品信息
+    //获取所有供常见问答选择的产品信息（未调用，常见问题模块调用）
     @RequestMapping(value = "/list/problem")
     @ResponseBody
     public PageContainer problem(Model model,@RequestParam Map<String,String> params){
         return productService.getProblemProductPage(params);
     }
-    //获取常见问答选择的产品信息
+    //获取常见问答选择的产品信息（常见问题单调用，获得相应数据）
     @RequestMapping(value = "/getSelectedProduct/{productId}")
     @ResponseBody
     public ResponseData getSelectedProduct(Model model,@PathVariable Long productId){

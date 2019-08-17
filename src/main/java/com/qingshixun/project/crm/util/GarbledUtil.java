@@ -21,7 +21,7 @@ public class GarbledUtil {
     /**
      * 判断是否是中文
      * 
-     * @param model
+     * @param
      * @return
      */
     private static boolean isChinese(char c) {
@@ -35,8 +35,7 @@ public class GarbledUtil {
 
     /**
      * 判断是否是乱码
-     * 
-     * @param model
+     *
      * @return
      */
     public static boolean isMessyCode(String strName) {

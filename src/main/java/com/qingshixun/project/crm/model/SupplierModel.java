@@ -84,4 +84,13 @@ public class SupplierModel extends BaseModel {
         this.instruction = instruction;
     }
 
+    public SupplierModel(SupplierModel supplier) {
+        this.name = supplier.getName();
+        this.mobile = supplier.getMobile();
+        this.email = supplier.getEmail();
+        this.instruction = supplier.getInstruction();
+    }
+
+    public SupplierModel() {
+    }
 }

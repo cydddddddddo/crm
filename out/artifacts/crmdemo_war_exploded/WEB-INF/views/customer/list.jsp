@@ -87,7 +87,6 @@
         // 显示列数
         var columnNumber = columnData.length - 1;
         // 初始化表格信息
-
         customerTable = $qingshixun.dataTable($('#customerTable'), {
             "bDestroy" : true,
             "ajax" : {
